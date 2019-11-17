@@ -4,9 +4,9 @@
   "description": "A basic node API boiler plate that uses express, helmet, bcryptjs, cors, and has api documentation setup on the main endpoint.",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "server": "nodemon index.js",
-    "test": "cross-env DB_ENV=testing jest --watch",
-    "start": "node index.js"
+    "test": "cross-env DB_ENV=testing jest --watch" 
   },
   "author": "FearTheDev",
   "license": "ISC",

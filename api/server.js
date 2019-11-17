@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 // Express for endpoint server
 const express = require('express');
 // Cors to allow cross domain usage.
