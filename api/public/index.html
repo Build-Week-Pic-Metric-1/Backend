@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>PIC METRIC 1 API</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body>
+    <header>
+        <h1>PIC METRIC 1 API</h1>
+        <p>Anaylyze what is in a picture, and the average type of picture.</p>
+    </header>
+    <section class="endpoint-list">
+        <div class="card">
+            <div class="card-header">
+                <h2>Register User</h2>
+                <h3>METHOD: GET</h3>
+                <h3>ENDPOINT: /api/auth/register/</h3>
+            </div>
+            <div class="card-body">
+
+                <div class='json-send'>
+                    <h2>Request</h2>
+<pre class="pre">
+{
+    <span class="key">"username"</span>: <span class="value">"Bob123"</span>,
+    <span class="key">"password"</span>: <span class="value">"rocksrkool"</span>
+}
+</pre>
+                </div>
+                <div class='json-receive'>
+                    <h2>Response</h2>
+ <pre class="pre">
+{
+<span class="key">"message"</span>: <span class="value">"Registration successful!"</span>,
+<span class="key">"id"</span>: <span class="number">1</span>,
+}
+</pre>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="card">
+                <div class="card-header">
+                    <h2>Login User</h2>
+                    <h3>METHOD: POST</h3>
+                    <h3>ENDPOINT: /api/auth/login/</h3>
+                </div>
+                <div class="card-body">
+    
+                    <div class='json-send'>
+                        <h2>Request</h2>
+    <pre class="pre">
+    {
+        <span class="key">"username"</span>: <span class="value">"Bob123"</span>,
+        <span class="key">"password"</span>: <span class="value">"rocksrkool"</span>
+    }
+    </pre>
+                    </div>
+                    <div class='json-receive'>
+                        <h2>Response</h2>
+     <pre class="pre">
+    {
+    <span class="key">"message"</span>: <span class="value">"Login successful!"</span>,
+    }
+    </pre>
+                    </div>
+    
+                </div>
+            </div>
+    </section>
+    <footer>
+        <h5>API developed by FearTheDev</h5>
+    </footer>
+</body>
+
+</html>
