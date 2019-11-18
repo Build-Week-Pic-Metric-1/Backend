@@ -1,4 +1,3 @@
-
 exports.up = function(knex) {
     return knex.schema.createTable('users', t =>{
         t.increments();
@@ -57,11 +56,20 @@ exports.up = function(knex) {
       .onDelete('CASCADE');
 
     })
+    .createTable('classifications', t =>{
+      t.increments();
+
+      t.string('classification', 255)
+      .notNullable()
+      .unique()
+      t.integer('total');
+    })
 };
 
 exports.down = function(knex) {
   return knex.schema
   .dropTable('analysis')
   .dropTable('photos')
-  .dropTable('users');
+  .dropTable('users')
+  .dropTable('classification');
 };

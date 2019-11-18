@@ -17,6 +17,7 @@ const sessionConfig = require('./sessionConfig').config(KnexSessionStorage);
 
 // Import Routers
 const authRouter = require('./routers/auth/auth-router');
+const photosRouter = require('./routers/photosRouter/photosRouter');
 
 // Define server
 const server = express();
@@ -34,9 +35,7 @@ server.get('/api/', (req,res) =>{
 });
 
 server.use('/api/auth', authRouter);
-
-
-// Potentially crashing Heroku
+server.use('/api/photos', photosRouter);
 
 // /* STATIC ENDPOINTS */
 
