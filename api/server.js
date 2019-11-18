@@ -29,7 +29,7 @@ server.use(morgan('dev'));
 server.use(session(sessionConfig));
 
 // Implement Routers
-server.get('/api/', (req,res) =>{
+server.get('/test', (req,res) =>{
     res.status(200).json({message: "Sessions implemented and live!", session: req.session});
 });
 
