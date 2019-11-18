@@ -35,14 +35,4 @@ server.get('/', (req,res) =>{
 
 server.use('/api/auth', authRouter);
 
-
-// Potentially crashing Heroku
-
-// /* STATIC ENDPOINTS */
-
-// Public documentation of API
-server.use('/', express.static(`${__dirname}/public`));
-// Catchall endpoint 404
-server.use('/*',express.static(`${__dirname}/public/404/`));
-
 module.exports = server;
