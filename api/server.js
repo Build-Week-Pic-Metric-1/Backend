@@ -40,9 +40,9 @@ server.use('/api/auth', authRouter);
 
 // /* STATIC ENDPOINTS */
 
-// // Public documentation of API
-// server.use('/', express.static(`${__dirname}/public`));
-// // Catchall endpoint 404
-// server.use('/*',express.static(`${__dirname}/public/404/`));
+// Public documentation of API
+server.use('/', express.static(`${__dirname}/public`));
+// Catchall endpoint 404
+server.use('/*',express.static(`${__dirname}/public/404/`));
 
 module.exports = server;
