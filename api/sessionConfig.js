@@ -6,11 +6,11 @@ const config = (KnexSessionStorage) =>{
         secret: process.env.COOKIE_SECRET || 'not really safe',
         cookie: {
             maxAge: 1000 * 60 * 60,
-            secure: true,
+            secure: false,
             httpOnly:true,
         },
         resave: false,
-        saveUninitialized: false, //Only for BW Project
+        saveUninitialized: true, //Only for BW Project
         store: new KnexSessionStorage({
             knex: knexConnection,
             clearInterval: 1000 * 60 * 10, //Deletes expired sessions every 10 minutes
