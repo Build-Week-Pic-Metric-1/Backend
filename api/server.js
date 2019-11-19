@@ -32,7 +32,7 @@ server.get('/api/', (req,res) =>{
     res.status(200).json({message: "Sessions implemented and live!", session: req.session});
 });
 
-server.use('/api/auth', authRouter);
+server.use('/api/auth', cors(), authRouter);
 server.use('/api/photos', photosRouter);
 
 // /* STATIC ENDPOINTS */
