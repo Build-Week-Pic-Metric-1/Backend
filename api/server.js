@@ -27,7 +27,7 @@ const corsOptions = {
     optionsSuccessStatus: 200,
 }
 
-server.use(cors());
+server.use(cors(corsOptions));
 
 //Global Middleware 
 server.use(express.json());
