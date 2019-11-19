@@ -1,5 +1,5 @@
 require('dotenv').config();
-// const cors = require('cors');
+const cors = require('cors');
 // Express for endpoint server
 const express = require('express');
 // Helmet for secured backend information
@@ -19,6 +19,8 @@ const photosRouter = require('./routers/photosRouter/photosRouter');
 
 // Define server
 const server = express();
+
+server.use(cors());
 
 server.use((req, res, next) =>{
     res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
