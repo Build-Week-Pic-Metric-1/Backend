@@ -1,5 +1,5 @@
 require('dotenv').config();
-
+const cors = require('cors');
 // Express for endpoint server
 const express = require('express');
 // Helmet for secured backend information
@@ -22,6 +22,7 @@ const server = express();
 
 //Global Middleware 
 server.use(express.json());
+server.use(cors());
 server.use(helmet());
 server.use(morgan('dev'));
 server.use(session(sessionConfig));
