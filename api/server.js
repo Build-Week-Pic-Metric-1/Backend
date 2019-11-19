@@ -2,8 +2,6 @@ require('dotenv').config();
 
 // Express for endpoint server
 const express = require('express');
-// Cors to allow cross domain usage.
-const cors = require('cors');
 // Helmet for secured backend information
 const helmet = require('helmet');
 // Morgan for local dev logging
@@ -25,7 +23,6 @@ const server = express();
 //Global Middleware 
 server.use(express.json());
 server.use(helmet());
-server.use(cors());
 server.use(morgan('dev'));
 server.use(session(sessionConfig));
 
