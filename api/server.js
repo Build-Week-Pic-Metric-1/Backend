@@ -20,17 +20,14 @@ const photosRouter = require('./routers/photosRouter/photosRouter');
 // Define server
 const server = express();
 
-server.use(cors());
+const corsOptions = {
+    origin: ['http://localhost:3000', 'http://localhost:8080'],
+    methods: 'GET, POST, PUT, DELETE',
+    credentials: true,
+    optionsSuccessStatus: 200,
+}
 
-server.use((req, res, next) =>{
-    res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
-    res.header('Access-Control-Allow-Credentials', true);
-    res.header('Access-Control-Allow-Headers', '*');
-    if(req.method === 'OPTIONS'){
-        res.header('Access-Control-Allow-Methods', 'PUT, POST, PATCH, DELETE, GET');
-        return res.status(200).json({});
-    }
-});
+server.use(cors());
 
 //Global Middleware 
 server.use(express.json());
