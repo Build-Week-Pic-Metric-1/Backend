@@ -22,7 +22,7 @@ router.post('/:id', authorized, (req,res) =>{
         .then(result =>{
             res.status(200).json(result);
         }).catch(error =>{
-            res.status(500).json({error: `Error: ${error}`});
+            res.status(500).json(error);
         });
         res.status(201).json({message: `Received a request from user with id: ${id} to add ${title} from url: ${url}`});
     }else{
