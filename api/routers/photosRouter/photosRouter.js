@@ -12,5 +12,16 @@ router.put('/:id', authorized, (req,res) =>{
     res.status(200).json({message: `Updated phot with id: ${id}`});
 });
 
+router.post('/:id', authorized, (req,res) =>{
+    const {id} = req.params;
+    const {title, url} = req.body;
+
+    if(title && body){
+        res.status(201).json({message: `Received a request from user with id: ${id} to add ${title} from url: ${url}`});
+    }else{
+        res.status(401).json({message: 'Please provide a title & url in your request.'});
+    }
+});
+
 
 module.exports = router;

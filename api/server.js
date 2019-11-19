@@ -22,7 +22,7 @@ const server = express();
 
 const corsOptions = {
     origin: ['http://localhost:3000', 'https://pic-metric-secure-test.netlify.com'],
-    methods: 'GET, POST, PUT, DELETE',
+    methods: 'GET, POST, PUT, DELETE, PATCH',
     credentials: true,
     optionsSuccessStatus: 200,
 }

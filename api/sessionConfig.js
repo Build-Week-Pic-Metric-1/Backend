@@ -8,7 +8,7 @@ const config = (KnexSessionStorage) =>{
             maxAge: 1000 * 60 * 60,
             secure: 'auto',
             sameSite: 'none',
-            httpOnly:false,
+            httpOnly:true,
 
         },
         resave: false,
