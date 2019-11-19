@@ -21,7 +21,7 @@ const photosRouter = require('./routers/photosRouter/photosRouter');
 const server = express();
 
 const corsOptions = {
-    origin: "https://pic-metric.herokuapp.com",
+    origin: "http://localhost:3000",
     optionsSuccessStatus: 200
 }
 
