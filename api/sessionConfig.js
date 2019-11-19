@@ -6,9 +6,10 @@ const config = (KnexSessionStorage) =>{
         secret: process.env.COOKIE_SECRET || 'not really safe',
         cookie: {
             maxAge: 1000 * 60 * 60,
-            secure: process.env.NODE_ENV === 'development' ? false : true,
+            secure: 'auto',
             sameSite: 'none',
             httpOnly:true,
+
         },
         resave: false,
         saveUninitialized: true, //Only for BW Project
