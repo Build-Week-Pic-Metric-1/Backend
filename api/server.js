@@ -1,5 +1,5 @@
 require('dotenv').config();
-const cors = require('cors');
+// const cors = require('cors');
 // Express for endpoint server
 const express = require('express');
 // Helmet for secured backend information
@@ -20,17 +20,17 @@ const photosRouter = require('./routers/photosRouter/photosRouter');
 // Define server
 const server = express();
 
-const corsOptions = {
-    origin: "http://localhost:3000",
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    preflightContinue: false,
-    optionsSuccessStatus: 200
-}
-
+server.use((req, res, next) =>{
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', '*');
+    if(req.method === 'OPTIONS'){
+        res.header('Access-Control-Allow-Methods', 'PUT, POST, PATCH, DELETE, GET');
+        return res.status(200).json({});
+    }
+});
 
 //Global Middleware 
 server.use(express.json());
-server.use(cors(corsOptions));
 server.use(helmet());
 server.use(morgan('dev'));
 server.use(session(sessionConfig));
