@@ -17,6 +17,9 @@ router.post('/register', (req, res) =>{
             res.status(201).json(u);
         }).catch(error =>{
             console.log(error);
+            res.header = {
+                "Access-Control-Allow-Credentials": true
+            }
             res.status(500).json({message: "An account with this username already exits."});
         });
     }else{
