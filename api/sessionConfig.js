@@ -6,9 +6,9 @@ const config = (KnexSessionStorage) =>{
         secret: process.env.COOKIE_SECRET || 'not really safe',
         cookie: {
             maxAge: 1000 * 60 * 60,
-            secure: true,
+            secure: 'auto',
             sameSite: 'none',
-            httpOnly:true,
+            httpOnly:false,
 
         },
         resave: false,
