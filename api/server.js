@@ -21,7 +21,7 @@ const photosRouter = require('./routers/photosRouter/photosRouter');
 const server = express();
 
 const corsOptions = {
-    origin: "localhost:3000",
+    origin: "http://localhost:3000",
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     preflightContinue: false,
     optionsSuccessStatus: 200
