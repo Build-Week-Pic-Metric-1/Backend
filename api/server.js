@@ -35,16 +35,6 @@ server.use(helmet());
 server.use(morgan('dev'));
 server.use(session(sessionConfig));
 
-// Implement Routers
-server.get('/api/', (req,res) =>{
-    res.status(200).json({message: "Sessions implemented and live!", session: req.session});
-});
-
-
-server.get('/owen/', (req,res) =>{
-    res.status(200).json({message: 'Welcome Owen, this is continous deployment.'});
-})
-
 server.use('/api/auth', authRouter);
 server.use('/api/photos', photosRouter);
 

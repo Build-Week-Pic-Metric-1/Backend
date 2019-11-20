@@ -11,7 +11,16 @@
         <h1>PIC METRIC 1 API</h1>
         <p>Anaylyze what is in a picture, and the average type of picture.</p>
     </header>
+
+    
+
     <section class="endpoint-list">
+
+        <div class="section-card">
+            <h2>Auth Router</h2>
+            <p>Handles register, login, and logout actions.</p>
+        </div>
+
         <div class="card">
             <div class="card-header">
                 <h2>Register User</h2>
@@ -91,27 +100,71 @@
                 </div>
             </div>
 
+            <div class="section-card">
+                <h2>Photos Router</h2>
+                <p>Supports full CRUD for managing photos in the database. (GET, ADD, UPDATE, DELETE)</p>
+            </div>
 
             <div class="card">
                 <div class="card-header">
-                    <h2>Get Photos User Provided</h2>
+                    <h2>Get Photos by User ID</h2>
                     <h3>METHOD: GET</h3>
-                    <h3>ENDPOINT: /api/photos/1</h3>
-                    <h3>NOT WORKING YET, WILL RETURN ARRAY OF PHOTOS + DATA</h3>
+                    <h3>ENDPOINT: /api/photos/:id</h3>
                 </div>
                 <div class="card-body">
     
                     <div class='json-receive'>
                         <h2>Response</h2>
      <pre class="pre">
-    {
-        <span class="key">"photos"</span>: <span class="value">"[ ]"</span>
-    }
+    [
+        {
+            <span class="key">"id"</span>: <span class="number">1</span>
+            <span class="key">"title"</span>: <span class="value">"Gandolf"</span>
+            <span class="key">"url"</span>: <span class="value">"https://upload.wikimedia.org/wikipedia/en/e/e9/Gandalf600ppx.jpg"</span>
+            <span class="key">"user_id"</span>: <span class="number">13</span>
+        },
+        {
+            <span class="key">"id"</span>: <span class="number">1</span>
+            <span class="key">"title"</span>: <span class="value">"Gandolf"</span>
+            <span class="key">"url"</span>: <span class="value">"https://upload.wikimedia.org/wikipedia/en/e/e9/Gandalf600ppx.jpg"</span>
+            <span class="key">"user_id"</span>: <span class="number">13</span>
+        }
+    ]
     </pre>
                     </div>
     
                 </div>
             </div>
+
+            <div class="card">
+                    <div class="card-header">
+                        <h2>Add Photo</h2>
+                        <h3>METHOD: POST</h3>
+                        <h3>ENDPOINT: /api/photos/:id</h3>
+                    </div>
+                    <div class="card-body">
+        
+                        <div class='json-send'>
+                            <h2>Request</h2>
+        <pre class="pre">
+        {
+            <span class="key">"photo_title"</span>: <span class="value">"Lord of the Rings Gandolf"</span>,
+            <span class="key">"photo_url"</span>: <span class="value">"https://upload.wikimedia.org/wikipedia/en/e/e9/Gandalf600ppx.jpg"</span>
+        }
+        </pre>
+                        </div>
+                        <div class='json-receive'>
+                            <h2>Response</h2>
+         <pre class="pre">
+        {
+            <span class="key">"id"</span>: <span class="number">4</span>
+            <span class="key">"photo_title"</span>: <span class="value">"Lord of the Rings Gandolf"</span>,
+            <span class="key">"photo_url"</span>: <span class="value">"https://upload.wikimedia.org/wikipedia/en/e/e9/Gandalf600ppx.jpg"</span>
+        </pre>
+                        </div>
+        
+                    </div>
+                </div>
     </section>
     <footer>
         <h5>API developed by FearTheDev</h5>
