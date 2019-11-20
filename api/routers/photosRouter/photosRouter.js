@@ -4,7 +4,7 @@ const axios = require('axios');
 const Photos = require('./photosModel');
 
 // Get all photos submitted by logged in user.
-router.get('/:id', async (req, res) => {
+router.get('/:id', authorized, async (req, res) => {
     const { id } = req.params;
     try {
         const photos = await Photos.findAllByUser(id);
@@ -18,7 +18,7 @@ router.get('/:id', async (req, res) => {
 
 
 // Submit a photo title, url to the database.
-router.post('/:id', async (req, res) => {
+router.post('/:id', authorized, async (req, res) => {
     const { id } = req.params;
     const { photo_title, photo_url } = req.body;
 
@@ -65,7 +65,7 @@ router.post('/:id', async (req, res) => {
 
 
 // Update title of a stored photo by user.
-router.put('/:id', async (req,res) =>{
+router.put('/:id', authorized, async (req,res) =>{
     const {id} = req.params;
     const {photo_id, photo_title} = req.body;
 
@@ -95,7 +95,7 @@ router.put('/:id', async (req,res) =>{
 });
 
 // Delete a stored photo by ID.
-router.delete('/:id', async (req,res) =>{
+router.delete('/:id', authorized, async (req,res) =>{
     const {id} = req.params;
 
     try{
