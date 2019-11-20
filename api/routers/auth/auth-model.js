@@ -20,8 +20,7 @@ const find = (type) =>{
 
 const add = user =>{
     return db('users')
-    .insert(user)
-    .returning('id')
+    .insert(user, 'id')
     .then(id => find(...id))
 };
 

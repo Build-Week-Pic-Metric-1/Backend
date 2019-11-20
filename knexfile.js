@@ -4,34 +4,22 @@ require('dotenv').config();
 module.exports = {
 
   development: {
-    client: 'pg',
+    client: 'sqlite3',
     useNullAsDefault: true,
     connection: {
-      database: process.env.DEV_DB,
-      user: process.env.DEV_DB_USER,
-      password: process.env.DEV_DB_PASSWORD,
+      filename: './api/database/picmetric.db',
     },
     migrations: {
-      directory: './api/database/migrations'
+      directory: './api/database/migrations',
     },
     seeds: {
-      directory: './api/database/seeds'
+      directory: './api/database/seeds',
     },
-  },
-
-  testing: {
-    client: 'pg',
-    useNullAsDefault: true,
-    connection: {
-      database: process.env.DEV_TESTING_DB,
-      user: process.env.DEV_DB_USER,
-      password: process.env.DEV_DB_PASSWORD,
-    },
-    migrations: {
-      directory: './api/testing/database/migrations'
-    },
-    seeds: {
-      directory: './api/testing/database/seeds'
+    pool: {
+      afterCreate: (conn, done) => {
+        // runs after a connection is made to the sqlite engine
+        conn.run('PRAGMA foreign_keys = ON', done); // turn on FK enforcement
+      },
     },
   },
 
