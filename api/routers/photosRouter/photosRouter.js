@@ -28,33 +28,26 @@ router.post('/:id', authorized, async (req, res) => {
 
         if (user) {
 
-            const photo = await Photos.add({
-                title: photo_title,
-                url: photo_url,
-                user_id: id
-            });
+            const photo = await Photos.add({title: photo_title, url: photo_url, user_id: id});
+
             if (photo) {
-                res.status(200).json({
-                    id: photo.id,
-                    title: photo.title,
-                    url: photo.url
-                });
 
-                // try {
+                try {
+                    const stats = await axios.post('https://pic-metric-1.herokuapp.com/predictor', { photo_id: photo.id, url: photo.url });
 
+                    let data = stats.data;
+                    console.log(typeof data);
 
-                //     const stats = await axios.post('https://pic-metric1.herokuapp.com/predictor', {
-                //         photo_id: photo.id,
-                //         url: photo.url
-                //     });
+                    console.log(data.photo_id);
+                    console.log(data.predictions);
 
-                //     if (stats) {
-                //         res.status(200).send(stats);
-                //     }
-                // } catch (error) {
-                //     console.log(error);
-                // }
+                    if (data) {
+                        res.status(200).json(stats.data);
+                    }
 
+                } catch (error) {
+                    console.log(error);
+                }
 
             }
 
