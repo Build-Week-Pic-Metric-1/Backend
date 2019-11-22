@@ -65,6 +65,22 @@ const findAllByPhotoId = (id) =>{
 
 }
 
+const findPhotoAndAnalysisByUserId = (id) =>{
+    return db('users')
+    .select('photos.id',
+    'photos.title',
+    'photos.url',
+    'analysis.class1',
+    'analysis.conf1',
+    'analysis.class2',
+    'analysis.conf2',
+    'analysis.class3',
+    'analysis.conf3')
+    .join('photos', {'users.id': 'photos.user_id'})
+    .join('analysis', {'photos.id': 'analysis.photo_id'} )
+    .where('users.id', id)
+}
+
 
 const add = (photo) =>{
     return db('photos')
@@ -78,6 +94,7 @@ module.exports = {
     findById,
     findAllByUser,
     findAllByPhotoId,
+    findPhotoAndAnalysisByUserId,
     add,
     update,
     remove,

@@ -17,7 +17,7 @@ router.get('/:id', authorized, async (req, res) => {
         //     res.status(200).json(photos);
         // }
 
-        const photos = await Photos.findAllByPhotoId(id);
+        const photos = await Photos.findPhotoAndAnalysisByUserId(id);
 
         if(photos)
         {
