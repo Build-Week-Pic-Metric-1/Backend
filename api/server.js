@@ -27,7 +27,7 @@ const photosRouter = require('./routers/photosRouter/photosRouter');
 const server = express();
 
 const corsOptions = {
-    origin: ['http://localhost:3000', 'https://pic-metric-secure-test.netlify.com'],
+    origin: ['http://localhost:3000', 'https://pic-metric.netlify.com', '*'],
     methods: 'GET, POST, PUT, DELETE, PATCH',
     credentials: true,
     optionsSuccessStatus: 200,

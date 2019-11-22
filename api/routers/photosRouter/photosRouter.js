@@ -2,16 +2,30 @@ const router = require('express').Router();
 const authorized = require('../../middleware/authorized');
 const axios = require('axios');
 const Photos = require('./photosModel');
+const Analysis = require('./analysisModel');
 
 // Get all photos submitted by logged in user.
 router.get('/:id', authorized, async (req, res) => {
     const { id } = req.params;
+
     try {
-        const photos = await Photos.findAllByUser(id);
-        if (photos) {
+
+        // const photos = await Photos.findAllByUser(id);
+
+        // if (photos) {
+
+        //     res.status(200).json(photos);
+        // }
+
+        const photos = await Photos.findAllByPhotoId(id);
+
+        if(photos)
+        {
             res.status(200).json(photos);
         }
+
     } catch (error) {
+        console.log(error);
         res.status(500).json(error);
     }
 });
@@ -36,13 +50,34 @@ router.post('/:id', authorized, async (req, res) => {
                     const stats = await axios.post('https://pic-metric-1.herokuapp.com/predictor', { photo_id: photo.id, url: photo.url });
 
                     let data = stats.data;
-                    console.log(typeof data);
-
-                    console.log(data.photo_id);
-                    console.log(data.predictions);
 
                     if (data) {
-                        res.status(200).json(stats.data);
+                        let keys = Object.keys(data.predictions);
+                        let values = Object.values(data.predictions);
+
+                        const analysis = {
+                            class1: keys[0],
+                            conf1: values[0],
+                            class2: keys[1],
+                            conf2: values[1],
+                            class3: keys[2],
+                            conf3: values[2],
+                            photo_id: photo.id
+                        }
+
+                        const result = Analysis.add(analysis);
+
+                        res.status(200).json({
+                                id: photo.id,
+                                title: photo.title,
+                                url: photo.url,
+                                class1: analysis.class1,
+                                conf1: analysis.conf1,
+                                class2: analysis.class2,
+                                conf2: analysis.conf2,
+                                class3: analysis.class3,
+                                conf3: analysis.conf3
+                        });
                     }
 
                 } catch (error) {

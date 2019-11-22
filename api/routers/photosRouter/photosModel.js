@@ -49,6 +49,22 @@ const remove = (id) =>{
     .delete()
 }
 
+const findAllByPhotoId = (id) =>{
+    return db('photos')
+    .select('photos.id',
+    'photos.title',
+    'photos.url',
+    'analysis.class1',
+    'analysis.conf1',
+    'analysis.class2',
+    'analysis.conf2',
+    'analysis.class3',
+    'analysis.conf3')
+    .join('analysis', {'photos.id': 'analysis.photo_id'})
+    where('photos.id', id);
+
+}
+
 
 const add = (photo) =>{
     return db('photos')
@@ -61,6 +77,7 @@ module.exports = {
     findUser,
     findById,
     findAllByUser,
+    findAllByPhotoId,
     add,
     update,
     remove,

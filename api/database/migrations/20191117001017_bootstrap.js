@@ -29,22 +29,20 @@ exports.up = function(knex) {
     .createTable('analysis', t =>{
       t.increments();
 
-      t.string('classification_1', 255)
+      t.string('class1', 255)
       .notNullable();
-      t.string('confidence_1', 255)
-      .notNullable();
-
-      t.string('classification_2', 255)
-      .notNullable();
-      t.string('confidence_2', 255)
+      t.string('conf1', 255)
       .notNullable();
 
-      t.string('classification_3', 255)
+      t.string('class2', 255)
       .notNullable();
-      t.string('confidence_3', 255)
+      t.string('conf2', 255)
       .notNullable();
 
-      t.string('closest_classification', 255);
+      t.string('class3', 255)
+      .notNullable();
+      t.string('conf3', 255)
+      .notNullable();
 
       // Foreign Photo ID
       t.integer('photo_id')
@@ -56,14 +54,6 @@ exports.up = function(knex) {
       .onDelete('CASCADE');
 
     })
-    .createTable('classifications', t =>{
-      t.increments();
-
-      t.string('classification', 255)
-      .notNullable()
-      .unique()
-      t.integer('total');
-    })
 };
 
 exports.down = function(knex) {
@@ -71,5 +61,4 @@ exports.down = function(knex) {
   .dropTable('analysis')
   .dropTable('photos')
   .dropTable('users')
-  .dropTable('classification');
 };
